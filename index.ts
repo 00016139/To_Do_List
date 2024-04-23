@@ -1,28 +1,28 @@
 #! /usr/bin/env node
 
-import inquirer from "inquirer"
+import inquirer from "inquirer";
 
-let Todos = [];
-let Condition = true;
+let toDos = [];
+let condition = true;
 
-
-while(Condition)
+while (condition) {
+  let answer = await inquirer.prompt([
     {
-const Answer = await inquirer.prompt([
-    {
-        name: "items",
-        message: "What do you want to add in Todos?",
-        type: "input"
+      name: "firstQuestion",
+      message: "What wuold you want to Add in your Todos?",
+      type: "input",
     },
 
     {
-        name: "Add_More",
-        message: "Do you want to Add more in Todos?",
+        name: "secondQuestion",
+        message: "Would you like add more in your Todos?",
         type: "confirm",
-        default: "false"
-    },
-]);
-Todos.push(Answer.items);
-Condition = Answer.Add_More
-console.log(Todos);
+        default: "true"
     }
+  ]);
+
+  toDos.push(answer.firstQuestion);
+  console.log(toDos);
+  condition = answer.secondQuestion;
+  
+};
